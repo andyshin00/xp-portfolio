@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { WindowDropDowns, Google } from 'components';
+import { WindowDropDowns } from 'components';
 import dropDownData from './dropDownData';
 import ie from 'assets/windowsIcons/ie-paper.png';
 import printer from 'assets/windowsIcons/17(32x32).png';
@@ -23,36 +23,15 @@ import windows from 'assets/windowsIcons/windows.png';
 import dropdown from 'assets/windowsIcons/dropdown.png';
 
 function InternetExplorer({ onClose }) {
-  const [state, setState] = useState({
-    route: 'main',
-    query: '',
-  });
-  function onSearch(str) {
-    if (str.length) {
-      setState({
-        route: 'search',
-        query: str,
-      });
-    }
-  }
-  function goMain() {
-    setState({
-      route: 'main',
-      query: '',
-    });
-  }
   function onClickOptionItem(item) {
     switch (item) {
       case 'Close':
         onClose();
         break;
-      case 'Home Page':
-      case 'Back':
-        goMain();
-        break;
       default:
     }
   }
+
   return (
     <Div>
       <section className="ie__toolbar">
@@ -65,13 +44,9 @@ function InternetExplorer({ onClose }) {
         </div>
         <img className="ie__windows-logo" src={windows} alt="windows" />
       </section>
+
       <section className="ie__function_bar">
-        <div
-          onClick={goMain}
-          className={`ie__function_bar__button${
-            state.route === 'main' ? '--disable' : ''
-          }`}
-        >
+        <div className="ie__function_bar__button--disable">
           <img className="ie__function_bar__icon" src={back} alt="" />
           <span className="ie__function_bar__text">Back</span>
           <div className="ie__function_bar__arrow" />
@@ -90,13 +65,13 @@ function InternetExplorer({ onClose }) {
             alt=""
           />
         </div>
-        <div className="ie__function_bar__button" onClick={goMain}>
+        <div className="ie__function_bar__button">
           <img className="ie__function_bar__icon--margin-1" src={home} alt="" />
         </div>
         <div className="ie__function_bar__separate" />
         <div className="ie__function_bar__button">
           <img
-            className="ie__function_bar__icon--normalize "
+            className="ie__function_bar__icon--normalize"
             src={search}
             alt=""
           />
@@ -132,16 +107,13 @@ function InternetExplorer({ onClose }) {
           <img className="ie__function_bar__icon--margin12" src={msn} alt="" />
         </div>
       </section>
+
       <section className="ie__address_bar">
         <div className="ie__address_bar__title">Address</div>
         <div className="ie__address_bar__content">
           <img src={ie} alt="ie" className="ie__address_bar__content__img" />
           <div className="ie__address_bar__content__text">
-            {`https://www.google.com.tw${
-              state.route === 'search'
-                ? `/search?q=${encodeURIComponent(state.query)}`
-                : ''
-            }`}
+            https://en.wikipedia.org/wiki/Andy
           </div>
           <img
             src={dropdown}
@@ -163,16 +135,13 @@ function InternetExplorer({ onClose }) {
           />
         </div>
       </section>
+
       <div className="ie__content">
         <div className="ie__content__inner">
-          <Google
-            route={state.route}
-            query={state.query}
-            onSearch={onSearch}
-            goMain={goMain}
-          />
+          <WikiPortfolio />
         </div>
       </div>
+
       <footer className="ie__footer">
         <div className="ie__footer__status">
           <img className="ie__footer__status__img" src={ie} alt="" />
@@ -189,6 +158,106 @@ function InternetExplorer({ onClose }) {
         </div>
       </footer>
     </Div>
+  );
+}
+
+function WikiPortfolio() {
+  return (
+    <div className="wiki">
+      <aside className="wiki__sidebar">
+        <div className="wiki__logo">W</div>
+        <div className="wiki__nav-title">Portfolio</div>
+        <a href="#overview">Overview</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </aside>
+
+      <main className="wiki__page">
+        <h1>Andy</h1>
+        <p className="wiki__subtitle">
+          From AndyPedia, the free portfolio encyclopedia
+        </p>
+
+        <table className="wiki__infobox">
+          <tbody>
+            <tr>
+              <th colSpan="2">Andy</th>
+            </tr>
+            <tr>
+              <td>Role</td>
+              <td>Developer / Designer</td>
+            </tr>
+            <tr>
+              <td>Focus</td>
+              <td>React, Three.js, MERN, Portfolio Sites</td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td>
+                <a href="https://github.com/" target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <section id="overview">
+          <h2>Overview</h2>
+          <p>
+            Andy is a developer building interactive web experiences, including
+            Windows XP-inspired portfolio interfaces, 3D websites, and
+            full-stack applications.
+          </p>
+        </section>
+
+        <section id="projects">
+          <h2>Projects</h2>
+          <ul>
+            <li>
+              <strong>Windows XP Portfolio</strong> — A nostalgic desktop-style
+              portfolio with draggable windows and custom apps.
+            </li>
+            <li>
+              <strong>3D Room Portfolio</strong> — A Three.js and Blender-based
+              interactive portfolio environment.
+            </li>
+            <li>
+              <strong>Ecommerce Platform</strong> — A MERN stack mock ecommerce
+              app with authentication and CI/CD.
+            </li>
+          </ul>
+        </section>
+
+        <section id="skills">
+          <h2>Skills</h2>
+          <p>
+            React, JavaScript, TypeScript, Node.js, Express, MongoDB, Three.js,
+            Blender, CSS, Git, Docker, and UI design.
+          </p>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>
+            Email: <a href="mailto:your@email.com">your@email.com</a>
+          </p>
+          <p>
+            GitHub:{' '}
+            <a href="https://github.com/" target="_blank" rel="noreferrer">
+              github.com/yourname
+            </a>
+          </p>
+          <p>
+            LinkedIn:{' '}
+            <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
+              linkedin.com/in/yourname
+            </a>
+          </p>
+        </section>
+      </main>
+    </div>
   );
 }
 
@@ -210,6 +279,7 @@ const Div = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
     flex-shrink: 0;
   }
+
   .ie__options {
     height: 23px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -217,11 +287,13 @@ const Div = styled.div`
     padding-left: 2px;
     flex: 1;
   }
+
   .ie__windows-logo {
     height: 100%;
     border-left: 1px solid white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
+
   .ie__function_bar {
     height: 36px;
     display: flex;
@@ -230,26 +302,31 @@ const Div = styled.div`
     padding: 1px 3px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
+
   .ie__function_bar__button {
     display: flex;
     height: 100%;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 3px;
+
     &:hover {
       border: 1px solid rgba(0, 0, 0, 0.1);
       box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.1);
     }
+
     &:hover:active {
       border: 1px solid rgb(185, 185, 185);
       background-color: #dedede;
       box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.7);
       color: rgba(255, 255, 255, 0.7);
+
       & > * {
         transform: translate(1px, 1px);
       }
     }
   }
+
   .ie__function_bar__button--disable {
     filter: grayscale(1);
     opacity: 0.7;
@@ -258,39 +335,47 @@ const Div = styled.div`
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0);
   }
+
   .ie__function_bar__text {
     margin-right: 4px;
   }
+
   .ie__function_bar__icon {
     height: 30px;
     width: 30px;
+
     &--normalize {
       height: 22px;
       width: 22px;
       margin: 0 4px 0 1px;
     }
+
     &--margin12 {
       height: 22px;
       width: 22px;
       margin: 0 1px 0 2px;
     }
+
     &--margin-1 {
       margin: 0 -1px;
       height: 30px;
       width: 30px;
     }
   }
+
   .ie__function_bar__separate {
     height: 90%;
     width: 1px;
     background-color: rgba(0, 0, 0, 0.2);
     margin: 0 2px;
   }
+
   .ie__function_bar__arrow {
     height: 100%;
     display: flex;
     align-items: center;
     margin: 0 4px;
+
     &:before {
       content: '';
       display: block;
@@ -299,11 +384,13 @@ const Div = styled.div`
       border-style: solid;
     }
   }
+
   .ie__function_bar__arrow--margin-11 {
     height: 100%;
     display: flex;
     align-items: center;
     margin: 0 1px 0 -1px;
+
     &:before {
       content: '';
       display: block;
@@ -312,6 +399,7 @@ const Div = styled.div`
       border-style: solid;
     }
   }
+
   .ie__address_bar {
     border-top: 1px solid rgba(255, 255, 255, 0.7);
     height: 22px;
@@ -321,11 +409,13 @@ const Div = styled.div`
     padding: 0 2px 2px;
     box-shadow: inset 0 -2px 3px -1px #2d2d2d;
   }
+
   .ie__address_bar__title {
     line-height: 100%;
     color: rgba(0, 0, 0, 0.5);
     padding: 5px;
   }
+
   .ie__address_bar__content {
     border: rgba(122, 122, 255, 0.6) 1px solid;
     height: 100%;
@@ -334,19 +424,23 @@ const Div = styled.div`
     align-items: center;
     background-color: white;
     position: relative;
+
     &__img {
       width: 14px;
       height: 14px;
     }
+
     &__img:last-child {
       width: 15px;
       height: 15px;
       right: 1px;
       position: absolute;
     }
+
     &__img:last-child:hover {
       filter: brightness(1.1);
     }
+
     &__text {
       position: absolute;
       white-space: nowrap;
@@ -355,24 +449,28 @@ const Div = styled.div`
       overflow: hidden;
     }
   }
+
   .ie__address_bar__go {
     display: flex;
     align-items: center;
     padding: 0 18px 0 5px;
     height: 100%;
     position: relative;
+
     &__img {
       height: 95%;
       border: 1px solid rgba(255, 255, 255, 0.2);
       margin-right: 3px;
     }
   }
+
   .ie__address_bar__links {
     display: flex;
     align-items: center;
     padding: 0 18px 0 5px;
     height: 100%;
     position: relative;
+
     &__img {
       position: absolute;
       right: 2px;
@@ -380,16 +478,19 @@ const Div = styled.div`
       height: 5px;
       width: 8px;
     }
+
     &__text {
       color: rgba(0, 0, 0, 0.5);
     }
   }
+
   .ie__address_bar__separate {
     height: 100%;
     width: 1px;
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 1px 0 rgba(255, 255, 255, 0.7);
   }
+
   .ie__content {
     flex: 1;
     overflow: auto;
@@ -398,6 +499,7 @@ const Div = styled.div`
     background-color: #f1f1f1;
     position: relative;
   }
+
   .ie__content__inner {
     position: relative;
     min-height: 800px;
@@ -405,6 +507,7 @@ const Div = styled.div`
     width: 100%;
     height: 100%;
   }
+
   .ie__footer {
     height: 20px;
     border-top: 1px solid transparent;
@@ -414,27 +517,32 @@ const Div = styled.div`
     align-items: center;
     padding-top: 2px;
   }
+
   .ie__footer__status {
     flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
     padding-left: 2px;
+
     &__text {
       font-size: 11px;
     }
+
     &__img {
       height: 14px;
       width: 14px;
       margin-right: 3px;
     }
   }
+
   .ie__footer__block {
     height: 85%;
     width: 22px;
     border-left: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: inset 1px 0 rgba(255, 255, 255, 0.7);
   }
+
   .ie__footer__right {
     display: flex;
     align-items: center;
@@ -444,14 +552,17 @@ const Div = styled.div`
     box-shadow: inset 1px 0 rgba(255, 255, 255, 0.7);
     padding-left: 5px;
     position: relative;
+
     &__text {
       font-size: 11px;
     }
+
     &__img {
       height: 14px;
       width: 14px;
       margin-right: 3px;
     }
+
     &__dots {
       position: absolute;
       right: 11px;
@@ -465,6 +576,111 @@ const Div = styled.div`
         10px 1px rgba(255, 255, 255, 1), 10px -2.5px rgba(255, 255, 255, 1),
         10px -6px rgba(255, 255, 255, 1);
     }
+  }
+
+  .wiki {
+    min-height: 100%;
+    display: flex;
+    background: #f8f9fa;
+    color: #202122;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .wiki__sidebar {
+    width: 150px;
+    flex-shrink: 0;
+    padding: 18px 12px;
+    background: #f6f6f6;
+    border-right: 1px solid #a2a9b1;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+
+  .wiki__logo {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    border: 1px solid #a2a9b1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    background: white;
+    font-family: Georgia, serif;
+  }
+
+  .wiki__nav-title {
+    font-weight: bold;
+    margin: 12px 0 6px;
+    border-bottom: 1px solid #a2a9b1;
+  }
+
+  .wiki__sidebar a {
+    display: block;
+    color: #0645ad;
+    text-decoration: none;
+    margin: 5px 0;
+  }
+
+  .wiki__sidebar a:hover {
+    text-decoration: underline;
+  }
+
+  .wiki__page {
+    flex: 1;
+    padding: 24px 36px;
+    background: white;
+    border-left: 1px solid white;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .wiki__page h1 {
+    font-size: 32px;
+    font-weight: normal;
+    margin: 0;
+    border-bottom: 1px solid #a2a9b1;
+  }
+
+  .wiki__subtitle {
+    font-size: 12px;
+    color: #54595d;
+    margin-top: 4px;
+    font-family: Arial, sans-serif;
+  }
+
+  .wiki__page h2 {
+    font-size: 22px;
+    font-weight: normal;
+    border-bottom: 1px solid #a2a9b1;
+    margin-top: 24px;
+  }
+
+  .wiki__page a {
+    color: #0645ad;
+  }
+
+  .wiki__infobox {
+    float: right;
+    width: 260px;
+    margin: 8px 0 16px 24px;
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    border-collapse: collapse;
+  }
+
+  .wiki__infobox th {
+    background: #cedff2;
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .wiki__infobox td {
+    border-top: 1px solid #a2a9b1;
+    padding: 6px;
   }
 `;
 

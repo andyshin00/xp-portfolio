@@ -234,16 +234,6 @@ function WinXP() {
   function onClickMenuItem(o) {
     if (o === 'Internet')
       dispatch({ type: ADD_APP, payload: appSettings['Internet Explorer'] });
-    else if (o === 'Minesweeper')
-      dispatch({ type: ADD_APP, payload: appSettings.Minesweeper });
-    else if (o === 'My Computer')
-      dispatch({ type: ADD_APP, payload: appSettings['My Computer'] });
-    else if (o === 'Notepad')
-      dispatch({ type: ADD_APP, payload: appSettings.Notepad });
-    else if (o === 'Winamp')
-      dispatch({ type: ADD_APP, payload: appSettings.Winamp });
-    else if (o === 'Paint')
-      dispatch({ type: ADD_APP, payload: appSettings.Paint });
     else if (o === 'Log Off')
       dispatch({ type: POWER_OFF, payload: POWER_STATE.LOG_OFF });
     else if (o === 'Turn Off Computer')

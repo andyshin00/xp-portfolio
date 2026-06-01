@@ -17,7 +17,6 @@ import wireless from 'assets/windowsIcons/234(16x16).png';
 import accessibility from 'assets/windowsIcons/238(16x16).png';
 import connection from 'assets/windowsIcons/309(16x16).png';
 import update from 'assets/windowsIcons/322(16x16).png';
-import notepad from 'assets/windowsIcons/327(16x16).png';
 import networkAssistance from 'assets/windowsIcons/357(16x16).png';
 import menu from 'assets/windowsIcons/358(16x16).png';
 import transfer from 'assets/windowsIcons/367(16x16).png';
@@ -29,7 +28,6 @@ import address from 'assets/windowsIcons/554(16x16).png';
 import connectionWizard from 'assets/windowsIcons/663(16x16).png';
 import networkSetup from 'assets/windowsIcons/664(16x16).png';
 import hyperCmd from 'assets/windowsIcons/669(16x16).png';
-import painter from 'assets/windowsIcons/680(16x16).png';
 import sound from 'assets/windowsIcons/690(16x16).png';
 import recent from 'assets/windowsIcons/716(16x16).png';
 import compatibility from 'assets/windowsIcons/747(16x16).png';
@@ -53,7 +51,6 @@ import solitaire from 'assets/windowsIcons/solitaire.png';
 import narrator from 'assets/windowsIcons/narrator.ico';
 import pinball from 'assets/windowsIcons/pinball.png';
 import restore from 'assets/windowsIcons/restore.ico';
-import mine from 'assets/minesweeper/mine-icon.png';
 
 export const MyRecentDocuments = [
   {
@@ -252,16 +249,6 @@ export const AllPrograms = [
       },
       {
         type: 'item',
-        icon: notepad,
-        text: 'Notepad',
-      },
-      {
-        type: 'item',
-        icon: painter,
-        text: 'Paint',
-      },
-      {
-        type: 'item',
         icon: calculator,
         text: 'Calculator',
       },
@@ -336,11 +323,6 @@ export const AllPrograms = [
         type: 'item',
         icon: spade,
         text: 'Internet Spades',
-      },
-      {
-        type: 'item',
-        icon: mine,
-        text: 'Minesweeper',
       },
       {
         type: 'item',
