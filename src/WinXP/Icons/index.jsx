@@ -57,10 +57,14 @@ function Icon({
 }) {
   const ref = useRef(null);
   function _onMouseDown() {
-    onMouseDown(id);
+    if (component) {
+      onMouseDown(id);
+    }
   }
   function _onDoubleClick() {
-    onDoubleClick(component);
+    if (component) {
+      onDoubleClick({ id, title, component });
+    }
   }
   useEffect(() => {
     const target = ref.current;

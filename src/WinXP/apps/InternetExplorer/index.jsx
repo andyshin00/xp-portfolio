@@ -113,7 +113,7 @@ function InternetExplorer({ onClose }) {
         <div className="ie__address_bar__content">
           <img src={ie} alt="ie" className="ie__address_bar__content__img" />
           <div className="ie__address_bar__content__text">
-            https://en.wikipedia.org/wiki/Andy
+            https://en.wikipedia.org/wiki/Andrew_Shin
           </div>
           <img
             src={dropdown}
@@ -174,15 +174,15 @@ function WikiPortfolio() {
       </aside>
 
       <main className="wiki__page">
-        <h1>Andy</h1>
+        <h1>Andrew Shin</h1>
         <p className="wiki__subtitle">
-          From AndyPedia, the free portfolio encyclopedia
+          From AndrewPedia, the free portfolio encyclopedia
         </p>
 
         <table className="wiki__infobox">
           <tbody>
             <tr>
-              <th colSpan="2">Andy</th>
+              <th colSpan="2">Andrew</th>
             </tr>
             <tr>
               <td>Role</td>

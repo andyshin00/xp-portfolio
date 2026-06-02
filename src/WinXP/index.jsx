@@ -215,10 +215,15 @@ function WinXP() {
   function onMouseDownIcon(id) {
     dispatch({ type: FOCUS_ICON, payload: id });
   }
-  function onDoubleClickIcon(component) {
-    const appSetting = Object.values(appSettings).find(
-      setting => setting.component === component,
-    );
+  function onDoubleClickIcon(icon) {
+    if (!icon) return;
+    const appSetting =
+      icon.title === 'MapleStory'
+        ? appSettings.MapleStory
+        : Object.values(appSettings).find(
+            setting => setting.component === icon.component,
+          );
+    if (!appSetting) return;
     dispatch({ type: ADD_APP, payload: appSetting });
   }
   function getFocusedAppId() {
